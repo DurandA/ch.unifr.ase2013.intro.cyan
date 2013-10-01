@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  mileage: 1
+  color: MyString
+  brand: MyString
+  user_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  mileage: 1
+  color: MyString
+  brand: MyString
+  user_id: 1
