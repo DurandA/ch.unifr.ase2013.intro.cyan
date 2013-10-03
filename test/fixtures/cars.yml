@@ -6,6 +6,7 @@ one:
   mileage: 1
   color: MyString
   brand: MyString
+  auction_ending: MyString
   user_id: 1
 
 two:
@@ -14,4 +15,5 @@ two:
   mileage: 1
   color: MyString
   brand: MyString
+  auction_ending: MyString
   user_id: 1

@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130929095146) do
+ActiveRecord::Schema.define(version: 20131003192129) do
+
+  create_table "bids", force: true do |t|
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cars", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "mileage"
+    t.string   "color"
+    t.string   "brand"
+    t.string   "auction_ending"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -26,6 +46,13 @@ ActiveRecord::Schema.define(version: 20130929095146) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "login"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

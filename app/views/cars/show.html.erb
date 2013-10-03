@@ -31,9 +31,22 @@
 </p>
 
 <p>
-  <strong>Bids:</strong>
-<%= render @car.bids %>
+<strong>Bids:</strong>
+<table border="1">
+  <%= render @car.bids %>
+</table>
+
 </p>
+<% if Date.today.to_time_in_current_zone < Date.parse(@car.auction_ending) %>
+  <h2>Add a bid:</h2>
+  <%= render 'bids/form', locals: {car: @car} %>
+<% else %>
+   <% @winner = @car.bids.last
+     if @winner%> won on <% @car.auction_ending %>
+   <%else%>
+     Nobody bet on this car
+   <%end%>
+<% end %>
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>

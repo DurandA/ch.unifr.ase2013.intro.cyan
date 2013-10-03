@@ -24,8 +24,15 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    @bid = Bid.new(bid_params)
 
+    @car = Car.find(params[:car_id])
+    @bid = @car.bids.create(params[:bid].permit(:amount))
+    #@bid = Bid.new(bid_params)
+    if !@bid.valid?
+      flash[:notice] = @bid.errors.full_messages.to_sentence
+    end
+    redirect_to car_path(@car)
+=begin
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
@@ -35,6 +42,7 @@ class BidsController < ApplicationController
         format.json { render json: @bid.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # PATCH/PUT /bids/1
