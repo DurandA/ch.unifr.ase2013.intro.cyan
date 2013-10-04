@@ -14,7 +14,9 @@ class BidsController < ApplicationController
 
   # GET /bids/new
   def new
-    @bid = Bid.new
+    aa== Bid.new
+    aa.user_id=1111
+    @bid =aa
   end
 
   # GET /bids/1/edit
@@ -27,6 +29,7 @@ class BidsController < ApplicationController
 
     @car = Car.find(params[:car_id])
     @bid = @car.bids.create(params[:bid].permit(:amount))
+
     #@bid = Bid.new(bid_params)
     if !@bid.valid?
       flash[:notice] = @bid.errors.full_messages.to_sentence
@@ -48,6 +51,7 @@ class BidsController < ApplicationController
   # PATCH/PUT /bids/1
   # PATCH/PUT /bids/1.json
   def update
+
     respond_to do |format|
       if @bid.update(bid_params)
         format.html { redirect_to @bid, notice: 'Bid was successfully updated.' }
@@ -72,6 +76,7 @@ class BidsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bid
+
       @bid = Bid.find(params[:id])
     end
 

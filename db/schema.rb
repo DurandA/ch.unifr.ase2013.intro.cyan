@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004112931) do
+ActiveRecord::Schema.define(version: 20131004193413) do
 
   create_table "bids", force: true do |t|
     t.integer  "amount"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20131004112931) do
     t.string   "color"
     t.string   "brand"
     t.string   "auction_ending"
-    t.integer  "ask_price"
     t.integer  "user_id"
+    t.integer  "ask_price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131004112931) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
 
 end

@@ -25,8 +25,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    uswithtoken= User.new(user_params)
+    uswithtoken.remember_token=SecureRandom.urlsafe_base64
 
+    @user=uswithtoken
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

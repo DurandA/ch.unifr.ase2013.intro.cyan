@@ -12,7 +12,22 @@
 <div id="header" style="background-color:#C0C0C0">
   <h1>Car Trading Application</h1>
   <h3>powered by Ruby on Rails - 2013 Arnaud Durand & Mikael Gasparian</h3>
+
+  <h3>currently loged as :
+
+    <% if signed_in? %>
+         <%= current_user.login %><%= link_to 'logout', signout_path %>
+    <% end %>
+
+     </h3>
+  <%= link_to 'Sign up now!', signin_path %>
+
+
 </div>
+
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
 
 <%= yield %>
 

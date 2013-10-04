@@ -42,9 +42,18 @@
               Ended
           <% end %>
         </td>
-        <td><%= link_to 'Show', car %></td>
+
+        <% if signed_in?  %>
+        <td>  <%= link_to 'Show', car %></td>
+        <% end %>
+
+        <% if signed_in? && current_user.id==car.user_id %>
+
+
         <td><%= link_to 'Edit', edit_car_path(car) %></td>
         <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+
       </tr>
     <% end %>
   </tbody>
