@@ -2,7 +2,7 @@ class Bid < ActiveRecord::Base
   belongs_to :car
   belongs_to :user
   validates :amount, presence: true,
-  numericality: {only_integer: true, positive: true}
+            numericality: {only_integer: true, positive: true}
   validate :bid_amount
 
   def bid_amount
