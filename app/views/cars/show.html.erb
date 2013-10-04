@@ -31,6 +31,11 @@
 </p>
 
 <p>
+  <strong>Ask price:</strong>
+  <%= @car.ask_price %>.--
+</p>
+
+<p>
 <strong>Bids:</strong>
 <table border="1">
   <%= render @car.bids %>
@@ -41,12 +46,21 @@
   <h2>Add a bid:</h2>
   <%= render 'bids/form', locals: {car: @car} %>
 <% else %>
-   <% @winner = @car.bids.last
-     if @winner%> won on <% @car.auction_ending %>
+   <% @win_bid = @car.bids.last
+     if @win_bid%><%= @win_bid.user.login %> won on <%= @car.auction_ending %>
    <%else%>
      Nobody bet on this car
    <%end%>
 <% end %>
+
+<p>
+  <strong>Auction ending:</strong>
+  <% if Date.today.to_time_in_current_zone < Date.parse(@car.auction_ending) %>
+      <%= @car.auction_ending %>
+  <% else %>
+      Ended on <%= @car.auction_ending %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>

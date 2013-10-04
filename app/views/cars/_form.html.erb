@@ -36,6 +36,10 @@
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
+    <%= f.label :ask_price %><br>
+    <%= f.text_field :ask_price %>
+  </div>
+  <div class="field">
       <%= f.label :auction_ending %><br>
       <%= f.text_field :auction_ending, :id=>"auctionEnding" %>
     <script>$(document).ready(function() { $("#auctionEnding").datepicker({ dateFormat: "yy-mm-dd"}); $('#ui-datepicker-div').removeClass('ui-helper-hidden-accessible') })

@@ -9,5 +9,8 @@ class Bid < ActiveRecord::Base
     if Bid.exists? ['amount >= ? AND car_id = ?', amount, car_id]
       errors.add( :amount, 'cannot be lower or equal to the previous bid')
     end
+    if amount < car.ask_price
+      errors.add( :amount, 'cannot be lower or equal to the asking price')
+    end
   end
 end

@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20131003192129) do
     t.string   "brand"
     t.string   "auction_ending"
     t.integer  "user_id"
+    t.integer  "ask_price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,6 +9,9 @@
       <th>Color</th>
       <th>Brand</th>
       <th>User</th>
+      <th>Ask price</th>
+      <th>Current bid</th>
+      <th>Auction ending</th>
       <th></th>
       <th></th>
       <th></th>
@@ -24,6 +27,21 @@
         <td><%= car.color %></td>
         <td><%= car.brand %></td>
         <td><%= car.user_id %></td>
+        <td><%= car.ask_price %>.--</td>
+        <td>
+          <% if car.bids.last%>
+            <%= car.bids.last.amount %>.--
+          <% else %>
+            No bids
+          <% end %>
+        </td>
+        <td>
+          <% if Date.today.to_time_in_current_zone < Date.parse(car.auction_ending) %>
+              <%= car.auction_ending %>
+          <% else %>
+              Ended
+          <% end %>
+        </td>
         <td><%= link_to 'Show', car %></td>
         <td><%= link_to 'Edit', edit_car_path(car) %></td>
         <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,3 +53,4 @@
 <br>
 
 <%= link_to 'New Car', new_car_path %>
+<%= link_to 'Back', root_path %>
