@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-
+  before_action  :is_me_car, only: [:edit, :update, :destroy]
   # GET /cars
   # GET /cars.json
   def index
@@ -25,6 +25,8 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+
+
   end
 
   # POST /cars
@@ -72,11 +74,21 @@ class CarsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
-      @car = Car.find(params[:id])
+      @car = Car.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:title, :description, :mileage, :color, :brand, :ask_price,:auction_ending, :user_id)
     end
+
+  def is_me_car
+    @car = Car.find_by_id(params[:id])
+
+    if !signed_in? || @car.user_id !=current_user.id
+      flash[:info] = "h3LL0 K3vin , 5orRy 8u7 n07 t0d@Y :)  "
+
+      redirect_to root_path
+    end
+  end
 end

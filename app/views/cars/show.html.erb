@@ -61,6 +61,8 @@
       Ended on <%= @car.auction_ending %>
   <% end %>
 </p>
+<% if  signed_in?   &&   @car.user_id ==current_user     %>
+    <%= link_to 'Edit', edit_car_path(@car) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
