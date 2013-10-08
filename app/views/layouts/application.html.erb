@@ -15,8 +15,8 @@
 
 
 
-  <% if false %>
-    currently loged as :
+  <% if signed_in? %>
+    currently logged as :
       <%= current_user.login %></br><%= link_to 'logout', signout_path %>
   <% else %>
       <%= link_to 'Sign up now!', signin_path %>
