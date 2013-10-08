@@ -13,14 +13,17 @@
   <h1>Car Trading Application</h1>
   <h3>powered by Ruby on Rails - 2013 Arnaud Durand & Mikael Gasparian</h3>
 
-  <h3>currently loged as :
 
-    <% if signed_in? %>
-         <%= current_user.login %><%= link_to 'logout', signout_path %>
-    <% end %>
 
-     </h3>
-  <%= link_to 'Sign up now!', signin_path %>
+  <% if signed_in? %>
+    currently loged as :
+      <%= current_user.login %></br><%= link_to 'logout', signout_path %>
+  <% else %>
+      <%= link_to 'Sign up now!', signin_path %>
+  <% end %>
+
+
+
 
 
 </div>

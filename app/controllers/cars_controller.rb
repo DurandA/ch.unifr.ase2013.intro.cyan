@@ -35,7 +35,7 @@ class CarsController < ApplicationController
 
 
     car = Car.new(car_params)
-                car.user_id= current_user.id
+    car.user_id= current_user.id
     respond_to do |format|
       if car.save
         format.html { redirect_to car, notice: 'Car was successfully created.' }

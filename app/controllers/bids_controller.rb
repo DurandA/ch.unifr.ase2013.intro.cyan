@@ -14,9 +14,7 @@ class BidsController < ApplicationController
 
   # GET /bids/new
   def new
-    aa== Bid.new
-    aa.user_id=1111
-    @bid =aa
+    @bid =Bid.new
   end
 
   # GET /bids/1/edit
@@ -26,9 +24,8 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-
     @car = Car.find(params[:car_id])
-    @bid = @car.bids.create(params[:bid].permit(:amount))
+    @bid = @car.bids.create({:amount => params[:bid][:amount], :user_id => current_user.id})
 
     #@bid = Bid.new(bid_params)
     if !@bid.valid?
